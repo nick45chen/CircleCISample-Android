@@ -12,6 +12,22 @@ public class HolidayTest {
         Holiday holiday = spy(Holiday.class);
         when(holiday.getCurrentMonth()).thenReturn(12);
         when(holiday.getCurrentDayOfMonth()).thenReturn(25);
-        assertEquals("Merry Xmas1", holiday.sayXmas());
+        assertEquals("Merry Xmas", holiday.sayXmas());
+    }
+
+    @Test
+    public void today_is_xmas_12_24() {
+        Holiday holiday = spy(Holiday.class);
+        when(holiday.getCurrentMonth()).thenReturn(12);
+        when(holiday.getCurrentDayOfMonth()).thenReturn(24);
+        assertEquals("Merry Xmas", holiday.sayXmas());
+    }
+
+    @Test
+    public void today_is_not_xmas_11_24() {
+        Holiday holiday = spy(Holiday.class);
+        when(holiday.getCurrentMonth()).thenReturn(11);
+        when(holiday.getCurrentDayOfMonth()).thenReturn(24);
+        assertEquals("Today is not Xmas", holiday.sayXmas());
     }
 }
