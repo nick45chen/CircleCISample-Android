@@ -12,6 +12,6 @@ public class HolidayTest {
         Holiday holiday = spy(Holiday.class);
         when(holiday.getCurrentMonth()).thenReturn(12);
         when(holiday.getCurrentDayOfMonth()).thenReturn(25);
-        assertEquals("Merry Xmas", holiday.sayXmas());
+        assertEquals("Merry Xmas1", holiday.sayXmas());
     }
 }
