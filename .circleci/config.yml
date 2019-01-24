@@ -6,6 +6,9 @@ jobs:
     - image: circleci/android:api-28-alpha
     environment:
       JVM_OPTS: -Xmx3200m
+    branches:
+      only:
+      - master
     steps:
     - checkout
     - restore_cache:
@@ -16,11 +19,11 @@ jobs:
     - run:
         name: Download Dependencies
         pre:
-          - echo y | android update sdk --no-ui --filter "android-28"
-          - echo y | android update sdk --no-ui --filter "build-tools-28.0.0"
-          - echo y | android update sdk --no-ui --filter "extra-android-m2repository"
-          - echo y | android update sdk --no-ui --filter "extra-android-support"
-          - echo y | android update sdk --no-ui --filter "extra-google-m2repositor"
+        - echo y | android update sdk --no-ui --filter "android-28"
+        - echo y | android update sdk --no-ui --filter "build-tools-28.0.0"
+        - echo y | android update sdk --no-ui --filter "extra-android-m2repository"
+        - echo y | android update sdk --no-ui --filter "extra-android-support"
+        - echo y | android update sdk --no-ui --filter "extra-google-m2repositor"
         command: ./gradlew androidDependencies
     - save_cache:
         paths:
